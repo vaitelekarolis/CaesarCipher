@@ -14,9 +14,13 @@ namespace CaesarCipher
         }
         public char CipherLetter(char letter, int shift)
         {
-            char startingLetter = char.IsLower(letter) ? 'a' : 'A';
+            if (char.IsLetter(letter))
+            {
+                char startingLetter = char.IsLower(letter) ? 'a' : 'A';
 
-            return (char)((letter + shift - startingLetter)%26 + startingLetter);
+                return (char)((letter + shift - startingLetter) % 26 + startingLetter);
+            }
+            return letter;
         }
         public string Encrypt(string phrase, int shift)
         {
@@ -30,10 +34,7 @@ namespace CaesarCipher
 
             foreach (char letter in phrase)
             {
-                if (char.IsLetter(letter))
-                    encryption.Append(CipherLetter(letter, shift));
-                else
-                    encryption.Append(letter);
+                encryption.Append(CipherLetter(letter, shift));
             }
 
             return encryption.ToString();

@@ -21,6 +21,19 @@ namespace UnitTests
             Assert.AreEqual(expectedResult, actualResult);
         }
         [TestMethod]
+        public void CipherLettersOnlyAndReturnsSameCharIfNotLetter()
+        {
+            char letter = '_';
+            int shift = 7;
+            char expectedResult = '_';
+
+            Caesar caesar = new Caesar();
+
+            char actualResult = caesar.CipherLetter(letter, shift);
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
         public void CipherCorrectlyEncriptsWithSimpleShift()
         {
             string phrase = "Ashened";
